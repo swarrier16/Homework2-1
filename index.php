@@ -1,0 +1,51 @@
+<?php
+
+  //get data from the form
+  $product_description = $_POST['product_description'];
+  $list_price = $_POST['list_price'];
+  $discount_percent = $_POST['discount_percent'];
+
+  //calculate the discount
+  $discount = $list_price * $discount_percent * .01;
+  $discount_price = $list_price - $discount;
+
+  //apply currency formatting to dollar and percent amounts
+  $list_price_formatted = "$".number_format($list_price, 2);
+  $discount_percent_formatted = $discount_percent."%";
+  $discount_formatted = "$".number_format($discount, 2);
+  $discount_price_formatted = "$".number_format($discount_price, 2);
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Discount Calculator</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+    <main>
+        <h1>Product Discount Calculator</h1>
+	<form action="display_discount.php" method="post">
+
+          <div id="data">
+	      <label>Product Description:</label>
+	      <input type="text" name="product_description"><br>
+
+              <label>List Price:</label>
+	      <input type="text" name="list_price"><br>
+	     
+	     <label>Discount Percent:</label>
+	     <input type="text" name="discount_percent"><span>%</span><br>
+	  </div>
+
+	   <div id="buttons">
+	      <label>&nbsp;</label>
+	      <input type="submit" value="Calculate Discount"><br>
+	   </div>
+
+         </form>
+     </main>
+ </body>
+</html>
